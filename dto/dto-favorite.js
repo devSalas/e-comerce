@@ -1,22 +1,20 @@
 import Ajv from "ajv"
 import addFormat from 'ajv-formats'
 
-const dtoLogin = {
+const dtoFavorite = {
     type: 'object',
     properties: {
-        email: { type: 'string', format: 'email' },
-        password: { type: 'string'},
+        favorite: { type: 'string'},
     },
-    required: ['email', 'password'],
+    required: ['name'],
     additionalProperties: false
 }
 
 const ajv = new Ajv({ allErrors: true })
-addFormat(ajv,["email"])
 
-const validate = ajv.compile(dtoLogin)
+const validate = ajv.compile(dtoFavorite)
 
-const loginValidate = (req, res, next) => {
+const favoriteValidate = (req, res, next) => {
     const yesno = validate(req.body)
 
     if (!yesno) return res.status(403).send({ message: validate.errors.map(error => error.message) })
@@ -24,4 +22,4 @@ const loginValidate = (req, res, next) => {
     next()
 }
 
-export default loginValidate
+export default favoriteValidate

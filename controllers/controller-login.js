@@ -1,4 +1,6 @@
-import usermodel from '../schema/schema.js'
+import usermodel from '../schema/user-Db.js'
+import { compare } from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const controllerlogin=async(req,res)=>{
 
@@ -6,23 +8,18 @@ const controllerlogin=async(req,res)=>{
 
     const user = await usermodel.findOne({email}).exec()   
 
-    if(!user) return res.status(404).json({message:'Email o contraseña incorrecta'})
+    if(!user) return res.status(403).json({message:'Email o contraseña incorrecta'})
 
-    const check=user.password==password?true:false
+    const verifyPassword= await compare(password,user.password)
 
-    if(!check) return res.status(404).json({message:"Email o contraseña incorrecta"})
+    if(!verifyPassword) return res.status(403).json({message:"Email o contraseña incorrecta"})
 
-    res.cookie('_id',user._id,{maxAge:60000,httponly:true})
-    res.end()
+    const token=await jwt.sign({_id:user._id},process.env.SECRET_JWT,{algorithm:'HS256',expiresIn:'1h'})
+
+    res.cookie('token',token,{maxAge:60000,httponly:true})
+    res.end(token)
 }
 
 
 
 export default controllerlogin
-
-
-
-
-
-
-  

@@ -1,22 +1,24 @@
 import Ajv from "ajv"
 import addFormat from 'ajv-formats'
 
-const dtoLogin = {
+const dtoRegister = {
     type: 'object',
     properties: {
+        name:{type:'string', minLength:3,maxLength:15},
         email: { type: 'string', format: 'email' },
-        password: { type: 'string'},
+        password: { type: 'string', minLength:8},
+        role:{type:'array'}
     },
-    required: ['email', 'password'],
+    required: ['email', 'password','name'],
     additionalProperties: false
 }
 
 const ajv = new Ajv({ allErrors: true })
 addFormat(ajv,["email"])
 
-const validate = ajv.compile(dtoLogin)
+const validate = ajv.compile(dtoRegister)
 
-const loginValidate = (req, res, next) => {
+const registerValidate = (req, res, next) => {
     const yesno = validate(req.body)
 
     if (!yesno) return res.status(403).send({ message: validate.errors.map(error => error.message) })
@@ -24,4 +26,4 @@ const loginValidate = (req, res, next) => {
     next()
 }
 
-export default loginValidate
+export default registerValidate
