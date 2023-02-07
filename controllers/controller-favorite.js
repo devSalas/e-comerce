@@ -1,5 +1,4 @@
 import usermodel from '../schema/user-Db.js'
-import productmodel from '../schema/product-Db.js'
 
 const controllerFavorite=async(req,res)=>{
 

@@ -16,7 +16,7 @@ const controllerlogin=async(req,res)=>{
 
     const token=await jwt.sign({_id:user._id},process.env.SECRET_JWT,{algorithm:'HS256',expiresIn:'1h'})
 
-    res.cookie('token',token,{maxAge:60000,httponly:true})
+    res.cookie('token',token,{maxAge:36000000,httponly:true})
     res.end(token)
 }
 
