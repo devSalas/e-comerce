@@ -15,6 +15,9 @@ app.use(express.json())
 app.use('/api',router)
 app.use('/',routerUser)
 
+app.use((req, res, next) => {
+  res.status(404).send("Sorry can't find that!")
+})
 
 const servidor=async()=>{
 

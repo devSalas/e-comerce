@@ -11,7 +11,7 @@ const controllerRegister=async(req,res)=>{
     if(user) return res.status(403).json({message:'Email existente'})
 
     const rol =await rolemodel.findOne({name:'user'}).exec()
-    console.log(rol)
+    
     const passwordHash=await hash(password,10)
     
     const newUser=new usermodel({
