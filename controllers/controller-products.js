@@ -2,7 +2,7 @@ import productmodel from '../schema/product-Db.js'
 
 const controllerProduct=async(req,res)=>{
     
-    const {page}=req.query
+    const {page,name}=req.query
     
     if(page){
         
@@ -12,6 +12,16 @@ const controllerProduct=async(req,res)=>{
     
         return res.json({page,cantidad:products.length,products})
     } 
+
+    if(name){
+
+        const product=await productmodel.find({title:name}).exec()
+        
+        if(product.length==0) return res.status(403).json({message:'Not Found products'})
+    
+        return res.json({product})
+
+    }
 
     const products = await productmodel.find().exec()
     

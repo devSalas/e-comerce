@@ -6,9 +6,13 @@ const controllerRegister=async(req,res)=>{
 
     const {name,email,password}=req.body
 
-    const user = await usermodel.findOne({email}).exec()   
+    const userName= await usermodel.findOne({name}).exec()   
 
-    if(user) return res.status(403).json({message:'Email existente'})
+    if(userName) return res.status(403).json({message:'Name existente'})
+    
+    const userEmail=await usermodel.findOne({email}).exec()
+    
+    if(userEmail) return res.status(403).json({message:'Email existente'})
 
     const rol =await rolemodel.findOne({name:'user'}).exec()
     

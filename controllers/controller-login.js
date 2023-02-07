@@ -15,7 +15,7 @@ const controllerlogin=async(req,res)=>{
 
     if(!verifyPassword) return res.status(403).json({message:"Email o contraseña incorrecta"})
 
-    const token=await jwt.sign({_id:user._id},process.env.SECRET_JWT,{algorithm:'HS256',expiresIn:'1h'})
+    const token=await jwt.sign({_id:user._id},process.env.SECRET_JWT,{algorithm:'HS256',expiresIn:'7h'})
 
     const verifytoken=await jwtmodel.findOne({userId:user._id}).exec()
 
