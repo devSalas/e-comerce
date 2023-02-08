@@ -7,7 +7,7 @@ const dtoRegister = {
         name:{type:'string', minLength:3,maxLength:15},
         email: { type: 'string', format: 'email' },
         password: { type: 'string', minLength:8},
-        role:{type:'array'}
+        role:{type:"string"}
     },
     required: ['email', 'password','name'],
     additionalProperties: false
