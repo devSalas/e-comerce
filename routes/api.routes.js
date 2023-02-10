@@ -6,11 +6,11 @@ import createProductsValidate from "../dto/dto-product.js";
 import controllerCreateProduct from "../controllers/controller-create-products.js";
 import controllerProductID from "../controllers/controller-products-id.js";
 
-const router = new Router();
+const routerproduct = new Router();
 
-router.get('/product',controllerProduct)
-router.get('/product/:id',controllerProductID)
-router.post('/create-product',jwtVerify,roleVerify,createProductsValidate,controllerCreateProduct)
+routerproduct.get('/product',controllerProduct)//todos los productos// querys:category, page
+routerproduct.get('/product/:id',controllerProductID)//productos por id
+routerproduct.post('/create-product',jwtVerify,roleVerify,createProductsValidate,controllerCreateProduct)//ruta para crear un producto nuevo
 
 
-export default router;
+export default routerproduct;

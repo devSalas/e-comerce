@@ -4,7 +4,7 @@ import { hash } from 'bcrypt'
 const controllerRegister=async(req,res)=>{
 
     const {name,email,password}=req.body
-    console.log({name,email,password})
+    
     const userName= await usermodel.findOne({name}).exec()   
 
     if(userName) return res.status(403).json({message:'Name existente'})

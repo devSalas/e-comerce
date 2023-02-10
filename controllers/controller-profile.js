@@ -10,7 +10,7 @@ const controllerprofile=async(req,res)=>{
 
     const {name,email,password}=user
 
-    res.json({name,email,password})
+    res.json({name,email})
 }
 
 

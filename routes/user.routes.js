@@ -15,12 +15,12 @@ import roleVerify from "../middleware/roleVerify.js";
 
 const routerUser = new Router();
 
-routerUser.post("/register",registerValidate,controllerRegister)
-routerUser.post("/login",loginValidate,controllerlogin)
-routerUser.patch("/logout",jwtVerify,controllerlogout)
-routerUser.get("/profile",jwtVerify,controllerprofile)
-routerUser.post("/create-favorite",jwtVerify,favoriteValidate,controllerCreateFavorite)
-routerUser.get("/favorite",jwtVerify,controllerFavorite)
+routerUser.post("/register",registerValidate,controllerRegister)//register body:{name,email,password}
+routerUser.post("/login",loginValidate,controllerlogin)//login body:{email,password}, retorna una cookie con jwt 
+routerUser.patch("/logout",jwtVerify,controllerlogout)//logout , cambia el status de jwt en false
+routerUser.get("/profile",jwtVerify,controllerprofile)//profile, retorna los datos personales del usuario
+routerUser.post("/create-favorite",jwtVerify,favoriteValidate,controllerCreateFavorite)//create-favorite, añade un product favorito al usuario
+routerUser.get("/favorite",jwtVerify,controllerFavorite)//favorite, devuelve los productos favoritos del usuario
 /* routerUser.post('/assign-role',jwtVerify,roleVerify,roleValidate,controllerRole) */
 
 
