@@ -6,7 +6,7 @@ import createProductsValidate from "../dto/dto-product.js";
 import controllerCreateProduct from "../controllers/controller-create-products.js";
 import controllerProductID from "../controllers/controller-products-id.js";
 
-const router = new Router();
+const routerproduct = new Router();
 
 router.get('/product',controllerProduct)
 router.get('/product/:id',controllerProductID)
@@ -14,4 +14,4 @@ router.get('/product/:id',controllerProductID)
 router.post('/create-product',controllerCreateProduct)
 
 
-export default router;
+export default routerproduct;
