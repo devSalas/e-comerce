@@ -4,9 +4,12 @@ const controllerProductID=async(req,res)=>{
     
     const {id}=req.params
     
-    if(typeof(id)!=='number' || countParams.length>1) return res.status(404).json({message:'Not Found'})
     
     const product=await productmodel.findById(id).exec()
+
+    console.log(product)
+    
+    if(!product) return res.status(404).json({message:'Not Found'})
 
     if(!product) return res.status(404).json({message:'Not Found'})
 

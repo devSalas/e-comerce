@@ -25,3 +25,4 @@ const loginValidate = (req, res, next) => {
 }
 
 export default loginValidate
+
