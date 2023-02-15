@@ -10,7 +10,8 @@ const router = new Router();
 
 router.get('/product',controllerProduct)
 router.get('/product/:id',controllerProductID)
-router.post('/create-product',jwtVerify,roleVerify,createProductsValidate,controllerCreateProduct)
+/* router.post('/create-product',jwtVerify,roleVerify,createProductsValidate,controllerCreateProduct) */
+router.post('/create-product',controllerCreateProduct)
 
 
 export default router;
