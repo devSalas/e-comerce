@@ -8,10 +8,10 @@ import controllerProductID from "../controllers/controller-products-id.js";
 
 const routerproduct = new Router();
 
-router.get('/product',controllerProduct)
-router.get('/product/:id',controllerProductID)
+routerproduct.get('/product',controllerProduct)
+routerproduct.get('/product/:id',controllerProductID)
 /* router.post('/create-product',jwtVerify,roleVerify,createProductsValidate,controllerCreateProduct) */
-router.post('/create-product',controllerCreateProduct)
+routerproduct.post('/create-product',controllerCreateProduct)
 
 
 export default routerproduct;
