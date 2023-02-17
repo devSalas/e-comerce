@@ -6,6 +6,7 @@ import connection from "./config/connect_Db.js";
 import cookieParser from "cookie-parser";
 import routerUser from "./routes/user.routes.js";
 import morgan from "morgan";
+import routerPayment from "./routes/payment.routes.js";
 
 const app = express();
 /* middleware */
@@ -15,6 +16,7 @@ app.use(express.json())
 app.use(morgan('tiny'))
 app.use('/api',routerproduct)// api de productos
 app.use('/',routerUser)//rutas para el usuario
+app.use('/',routerPayment)//rutas para el usuario
 
 app.use((req, res, next) => {
   res.status(404).send("Sorry can't find that!")//middleware si no se encuentra una ruta
