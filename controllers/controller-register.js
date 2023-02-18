@@ -24,7 +24,7 @@ const controllerRegister=async(req,res)=>{
     })
     await newUser.save()
     
-    res.json({message:'Usuario creado'})
+    res.json({message:'Usuario creado',status:"ok"})
 }
 
 

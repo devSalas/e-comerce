@@ -25,7 +25,7 @@ const controllerlogin=async(req,res)=>{
         verifytoken.jwt=token
 
         res.cookie('token',token,{maxAge:36000000,httponly:true})
-        return res.end(token)
+        return res.send({token, status:"ok"})
     }
 
     const newtoken=new jwtmodel({
@@ -37,7 +37,7 @@ const controllerlogin=async(req,res)=>{
     newtoken.save()
     
     res.cookie('token',token,{maxAge:36000000,httponly:true})
-    res.end(token)
+    res.send({token, status:"ok"})
 }
 
 

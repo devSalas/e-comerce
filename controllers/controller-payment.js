@@ -6,14 +6,22 @@ const stripe =new Stripe('sk_test_51MNjItANEHdq6jhMobVaenrB8XCZzzcrdUXlWtyIm37wX
 
 /* app.use(express.static("public"));
 app.use(express.json()); */
+const priceTotalrounded =(totalPrice)=>{
+    let a = totalPrice * 100;
+    console.log(Math.round(a))
+    return Math.round(a)
+}
 
 const paymentController =  async (req, res) => {
   
-  const {products,priceTotalrounded} = req.body;
-  console.log({products,priceTotalrounded})
+  const {totalPrice,Products}= req.body;
+  console.log({totalPrice,Products})
+
+
+
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: priceTotalrounded,
+    amount: priceTotalrounded(totalPrice),
     currency: "usd",
     automatic_payment_methods: {
       enabled: true,
