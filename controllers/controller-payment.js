@@ -15,7 +15,7 @@ const priceTotalrounded =(totalPrice)=>{
 const paymentController =  async (req, res) => {
   
   const {totalPrice,Products}= req.body;
-  console.log({totalPrice,Products})
+
 
 
 
